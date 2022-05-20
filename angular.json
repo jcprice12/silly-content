@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "silly-content-management": "apps/silly-content-management",
+    "silly-content-management-e2e": "apps/silly-content-management-e2e"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/silly-content-management",
+  "sourceRoot": "apps/silly-content-management/src",
+  "prefix": "silly-content",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/silly-content-management",
+        "index": "apps/silly-content-management/src/index.html",
+        "main": "apps/silly-content-management/src/main.ts",
+        "polyfills": "apps/silly-content-management/src/polyfills.ts",
+        "tsConfig": "apps/silly-content-management/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/silly-content-management/src/favicon.ico",
+          "apps/silly-content-management/src/assets"
+        ],
+        "styles": ["apps/silly-content-management/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/silly-content-management/src/environments/environment.ts",
+              "with": "apps/silly-content-management/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "silly-content-management:build:production"
+        },
+        "development": {
+          "browserTarget": "silly-content-management:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/silly-content-management/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "silly-content-management:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/silly-content-management/src/**/*.ts",
+          "apps/silly-content-management/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/silly-content-management"],
+      "options": {
+        "jestConfig": "apps/silly-content-management/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
